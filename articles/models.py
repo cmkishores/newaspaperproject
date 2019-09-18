@@ -9,7 +9,5 @@ class Article(models.Model):
 	def __str__(self):
 		return self.title[:50]
 
-	def get_absolute_url(self):
-		return reverse('article', args=[str(self.id)])
-
+	
 # Create your models here.
