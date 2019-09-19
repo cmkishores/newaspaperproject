@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %} Welcome  {% endblock title  %}
 
-{% block body %} 
-
-{% if user.is_authenticated %}
-	
-	Hi {{ user.username }}
-	
-	<p><a href="{% url 'logout' %}">Logout</a></p>
-
-{% else %}
-
-	<p>You are not signed In..!!</p>
-	<p> <a href="{% url 'login' %}"> Login</a></p>
-	<p> <a href="{% url 'signup' %}">| Register</a> </p>
-{% endif %}
+{% block title %} Home {% endblock title %}
 
 
-{% endblock body %}
+{% block content %}
+	{% if user.is_authenticated %}
+  		Hi {{ user.username }}!
+ 		 <p><a href="{% url 'logout' %}">Log Out</a></p>
+	{% else %}
+  		<div class="alert alert-danger" role="alert">
+  				You are not Logged In !!
+  				<a href="{% url 'login' %}" >Log In</a>
+		</div>
+		<div class="alert alert-warning" role="alert">
+  				Not an existing user ?<a href="{% url 'signup' %}" >Sign Up !</a>
+		</div>
+  		 
+
+	{% endif %}
+
+
+{% endblock content %}
